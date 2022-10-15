@@ -5,22 +5,6 @@ from pprint import pprint
 
 import requests
 
-parser = argparse.ArgumentParser(
-    description="Fetch subdomain based on crt.sh"
-)
-parser.add_argument('-q', '--quiet',
-                    help="Only display domain",
-                    action='store_true',
-                    default=False,
-                    dest='quiet')
-
-parser.add_argument("-d", "--domain",
-                    help="Specify domain to search",
-                    type=str,
-                    required=True,
-                    dest="domain")
-args = parser.parse_args()
-
 
 def fetch_subdomain(domain: str) -> dict:
     """
@@ -32,11 +16,11 @@ def fetch_subdomain(domain: str) -> dict:
     return get.json()
 
 
-def quiet_output() -> list:
+def quiet_output(domain: str) -> list:
     """
     :return: only domain list.
     """
-    data = fetch_subdomain(args.domain)
+    data = fetch_subdomain(domain)
     subdomain_list = []
     for item in data:
         subdomain_list.append(item['name_value'])
@@ -54,11 +38,26 @@ def remove_redundant_in_list(source_list: list) -> list:
 
 def main():
     if args.quiet:
-        for subdomain in quiet_output():
+        for subdomain in quiet_output(args.domain):
             print(subdomain)
     else:
         pprint(fetch_subdomain(args.domain))
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description="Fetch subdomain based on crt.sh"
+    )
+    parser.add_argument('-q', '--quiet',
+                        help="Only display domain",
+                        action='store_true',
+                        default=False,
+                        dest='quiet')
+
+    parser.add_argument("-d", "--domain",
+                        help="Specify domain to search",
+                        type=str,
+                        required=True,
+                        dest="domain")
+    args = parser.parse_args()
     main()
