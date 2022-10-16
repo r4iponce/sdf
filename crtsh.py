@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-import argparse
 from pprint import pprint
 
 import requests
+
+from utils import remove_redundant_in_list
 
 
 def fetch_subdomain(domain: str) -> dict:
@@ -28,14 +29,6 @@ def quiet_output(domain: str) -> list:
     return remove_redundant_in_list(subdomain_list)
 
 
-def remove_redundant_in_list(source_list: list) -> list:
-    sorted_list = []
-    for item in source_list:
-        if item not in sorted_list:
-            sorted_list.append(item)
-    return sorted_list
-
-
 def main():
     if args.quiet:
         for subdomain in quiet_output(args.domain):
@@ -45,19 +38,6 @@ def main():
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description="Fetch subdomain based on crt.sh"
-    )
-    parser.add_argument('-q', '--quiet',
-                        help="Only display domain",
-                        action='store_true',
-                        default=False,
-                        dest='quiet')
+    from command_options import args
 
-    parser.add_argument("-d", "--domain",
-                        help="Specify domain to search",
-                        type=str,
-                        required=True,
-                        dest="domain")
-    args = parser.parse_args()
     main()
