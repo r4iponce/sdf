@@ -19,7 +19,7 @@ def detect_domain(word: str) -> bool:
     return bool('.' in word)
 
 
-def extract_domain(domain) -> list:
+def extract_domain(domain: str) -> list:
     headers = get_csp_headers(domain)
     separate_item = (re.split(' ', headers))
 
@@ -31,7 +31,7 @@ def extract_domain(domain) -> list:
     return remove_redundant_in_list(domain_list)
 
 
-def main():
+def main() -> None:
     domain_list = extract_domain(args.domain)
     for item in domain_list:
         print(item)

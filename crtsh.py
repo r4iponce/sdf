@@ -29,7 +29,7 @@ def quiet_output(domain: str) -> list:
     return remove_redundant_in_list(subdomain_list)
 
 
-def main():
+def main() -> None:
     if args.quiet:
         for subdomain in quiet_output(args.domain):
             print(subdomain)
