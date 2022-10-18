@@ -1,9 +1,9 @@
-name: Pylint
+name: pre-commit
 
 on: [ push ]
 
 jobs:
-    lint:
+    pre-commit:
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -20,4 +20,4 @@ jobs:
                     pip install -r requirements.txt
             -   name: Analysing the code with pylint
                 run: |
-                    pylint $(git ls-files '*.py')
+                    pre-commit run --all-files --color=always
