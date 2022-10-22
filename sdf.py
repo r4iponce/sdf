@@ -1,23 +1,27 @@
 import crtsh
 import csp
-from utils import remove_redundant_in_list
+from utils import print_list, remove_redundant_in_list
+
+
+def get_domain_list(domain: str) -> list[str]:
+    domain_list = []
+    for subdomain in crtsh.quiet_output(domain):
+        domain_list.append(subdomain)
+
+    try:
+        for subdomain in csp.extract_domain(domain):
+            domain_list.append(subdomain)
+    except KeyError:
+        print("CSP error")
+
+    return remove_redundant_in_list(domain_list)
 
 
 def main() -> None:
-    domain_list = []
+    subdomain = get_domain_list(args.domain)
     if args.quiet:
-        for subdomain in crtsh.quiet_output(args.domain):
-            domain_list.append(subdomain)
+        print_list(subdomain)
 
-        try:
-            for subdomain in csp.extract_domain(args.domain):
-                domain_list.append(subdomain)
-        except KeyError:
-            print("CSP error")
-
-        domain_list = remove_redundant_in_list(domain_list)
-        for item in domain_list:
-            print(item)
     else:
         pass
 
