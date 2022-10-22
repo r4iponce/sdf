@@ -4,6 +4,7 @@ SubDomain Fetcher
 How to use ?
 ------------
 .. code-block:: sh
+
     % python3 sdf.py --help
     usage: sdf.py [-h] [-q] -d DOMAIN
 
@@ -17,6 +18,7 @@ How to use ?
 .. note:: example :
 
 .. code-block::sh
+
     python3 sdf.py github.com
 
 
