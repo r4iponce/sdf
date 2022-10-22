@@ -1,13 +1,10 @@
-#!/usr/bin/env python3
+"""
+enumerate subdomain or url with Content-Security-Policy header.
+"""
 
 import re
 
 import requests
-
-from utils import remove_redundant_in_list
-
-
-# enumerate subdomain or url with Content-Security-Policy header.
 
 
 def get_csp_headers(url: str) -> str:
@@ -16,28 +13,16 @@ def get_csp_headers(url: str) -> str:
 
 
 def detect_domain(word: str) -> bool:
-    return bool('.' in word)
+    return bool("." in word)
 
 
-def extract_domain(domain: str) -> list:
+def extract_domain(domain: str) -> list[str]:
     headers = get_csp_headers(domain)
-    separate_item = (re.split(' ', headers))
+    separate_item = re.split(" ", headers)
 
     domain_list = []
     for key in separate_item:
         if detect_domain(key):
-            domain_list.append(key.replace(';', ''))
+            domain_list.append(key.replace(";", ""))
 
-    return remove_redundant_in_list(domain_list)
-
-
-def main() -> None:
-    domain_list = extract_domain(args.domain)
-    for item in domain_list:
-        print(item)
-
-
-if __name__ == '__main__':
-    from command_options import args
-
-    main()
+    return domain_list
