@@ -15,17 +15,14 @@ How to use ?
       -q, --quiet                   Only display domain
       -d DOMAIN, --domain DOMAIN    Specify domain to search
 
-.. note:: example :
+example :
 
-.. code-block::sh
+``python3 sdf.py github.com``
 
-    python3 sdf.py github.com
-
-
-csp.py
-------
+`csp.py <./csp.py>`_
+--------------------
 Find subdomain or url with Content-Security-Policy http header
 
-crtsh.py
---------
+`crtsh.py <./crtsh.py>`_
+------------------------
 A tool for fetch subdomain based on `crt.sh <https://crt.sh>`_
