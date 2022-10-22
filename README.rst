@@ -13,11 +13,12 @@ How to use ?
       -h, --help                    show this help message and exit
       -q, --quiet                   Only display domain
       -d DOMAIN, --domain DOMAIN    Specify domain to search
-   ...
-example :
+
+.. note:: example :
+
 .. code-block::sh
     python3 sdf.py github.com
-    ...
+
 
 csp.py
 ------
