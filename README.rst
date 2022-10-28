@@ -6,18 +6,17 @@ How to use ?
 .. code-block:: sh
 
     % python3 sdf.py --help
-    usage: sdf.py [-h] [-q] -d DOMAIN
+    usage: sdf.py [-h] -d DOMAIN
 
     Fetch subdomain based on crt.sh
 
     options:
       -h, --help                    show this help message and exit
-      -q, --quiet                   Only display domain
       -d DOMAIN, --domain DOMAIN    Specify domain to search
 
 example :
 
-``python3 sdf.py github.com``
+``python3 sdf.py -d github.com``
 
 `csp.py <./csp.py>`_
 --------------------

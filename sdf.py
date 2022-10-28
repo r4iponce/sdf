@@ -19,11 +19,7 @@ def get_domain_list(domain: str) -> list[str]:
 
 def main() -> None:
     subdomain = get_domain_list(args.domain)
-    if args.quiet:
-        print_list(subdomain)
-
-    else:
-        pass
+    print_list(subdomain)
 
 
 if __name__ == "__main__":
