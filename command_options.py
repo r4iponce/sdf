@@ -10,4 +10,21 @@ parser.add_argument(
     required=True,
     dest="domain",
 )
+
+parser.add_argument(
+    "--crtsh",
+    help="Disable use of crt.sh API",
+    dest="crtsh",
+    action="store_true",
+    default=False,
+)
+
+parser.add_argument(
+    "--csp",
+    help="Disable use CSP module",
+    dest="csp",
+    action="store_true",
+    default=False,
+)
+
 args = parser.parse_args()
