@@ -2,5 +2,5 @@ requests==2.28.1
 pylint==2.15.9
 types-requests==2.28.11.5
 pre-commit===2.20.0
-isort==5.10.1
+isort==5.11.3
 censys==2.1.9
