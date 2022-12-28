@@ -1,3 +1,8 @@
+"""
+Parse command line options
+"""
+
+
 import argparse
 
 parser = argparse.ArgumentParser(description="Fetch subdomain based on crt.sh")

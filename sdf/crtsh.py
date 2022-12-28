@@ -17,6 +17,7 @@ def fetch_subdomain(domain: str) -> dict:
 
 def quiet_output(domain: str) -> list[str]:
     """
+    :param domain: asked domain
     :return: only domain list.
     """
     data = fetch_subdomain(domain)
